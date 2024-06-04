@@ -5,7 +5,9 @@
     "lib": ["es2020", "DOM", "DOM.Iterable"],
     "strict": true,
     "moduleResolution": "node",
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "outDir": "./dist/"
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", "src/**/*.js"]
 }

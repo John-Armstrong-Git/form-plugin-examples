@@ -17,10 +17,11 @@ function hidePrivatesPlugin() {
 }
 
 export default {
-  globs: ["src/**/*.ts"],
-  exclude: ["src/**/*.stories.ts", "src/**/*.styles.ts"],
+  globs: ["src/**/*.ts", "src/**/*.js"],
+  exclude: ["src/**/*.stories.ts", "src/**/*.styles.ts", "src/**/*.stories.js", "src/**/*.styles.js"],
   outdir: "./",
   dev: false,
   litelement: true,
+  dependendies: true,
   plugins: [hidePrivatesPlugin()],
 };

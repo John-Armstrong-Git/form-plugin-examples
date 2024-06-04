@@ -30,7 +30,7 @@ export default [
 
     plugins: [
       resolve({
-        extensions: ['.ts', '.js'],
+        extensions: ['.ts', '.js']
       }),
       commonjs({
         include: ['node_modules/**'],
