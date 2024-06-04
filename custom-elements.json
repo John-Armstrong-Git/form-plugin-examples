@@ -70,6 +70,14 @@
             "name": "*",
             "package": "./components/embedded-esign/embedded-assuresign"
           }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./components/embed-iqpro/embed-iqpro"
+          }
         }
       ]
     },
@@ -1081,6 +1089,110 @@
           "declaration": {
             "name": "EmbeddedAssureSign",
             "module": "src/components/embedded-esign/embedded-assuresign.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/embed-iqpro/embed-iqpro.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "EmbedIqpro",
+          "members": [
+            {
+              "kind": "method",
+              "name": "getMetaConfig",
+              "static": true
+            },
+            {
+              "kind": "method",
+              "name": "load"
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "height"
+            },
+            {
+              "kind": "field",
+              "name": "url",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "url"
+            },
+            {
+              "kind": "field",
+              "name": "apikey",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "apikey"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "height",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "height"
+            },
+            {
+              "name": "url",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "url"
+            },
+            {
+              "name": "apikey",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "apikey"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "elementName",
+          "customElement": true
+        },
+        {
+          "kind": "variable",
+          "name": "elementName",
+          "type": {
+            "text": "string"
+          },
+          "default": "'embed-iqpro'"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "EmbedIqpro",
+          "declaration": {
+            "name": "EmbedIqpro",
+            "module": "src/components/embed-iqpro/embed-iqpro.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "elementName",
+          "declaration": {
+            "name": "EmbedIqpro",
+            "module": "src/components/embed-iqpro/embed-iqpro.js"
           }
         }
       ]
