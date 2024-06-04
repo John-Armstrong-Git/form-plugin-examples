@@ -62,6 +62,14 @@
             "name": "*",
             "package": "./components/grid-js/grid-js"
           }
+        },
+        {
+          "kind": "js",
+          "name": "*",
+          "declaration": {
+            "name": "*",
+            "package": "./components/embedded-esign/embedded-assuresign"
+          }
         }
       ]
     },
@@ -853,6 +861,226 @@
           "declaration": {
             "name": "NintexStyledInput",
             "module": "src/components/styled-input/styled-input.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/embedded-esign/embedded-assuresign.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "EmbeddedAssureSign",
+          "members": [
+            {
+              "kind": "method",
+              "name": "getMetaConfig",
+              "static": true
+            },
+            {
+              "kind": "method",
+              "name": "load"
+            },
+            {
+              "kind": "field",
+              "name": "envelopeName",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Envelope Name'",
+              "attribute": "envelopeName"
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "'900px'",
+              "attribute": "height"
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "src"
+            },
+            {
+              "kind": "field",
+              "name": "content",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "content"
+            },
+            {
+              "kind": "field",
+              "name": "signerName",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "signerName"
+            },
+            {
+              "kind": "field",
+              "name": "signerEmail",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "signerEmail"
+            },
+            {
+              "kind": "field",
+              "name": "assureSignApiUsername",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "assureSignApiUsername"
+            },
+            {
+              "kind": "field",
+              "name": "assureSignApiKey",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "assureSignApiKey"
+            },
+            {
+              "kind": "field",
+              "name": "assureSignApiUserEmail",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "assureSignApiUserEmail"
+            },
+            {
+              "kind": "field",
+              "name": "assureSignTemplateId",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "assureSignTemplateId"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "src"
+            },
+            {
+              "name": "content",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "content"
+            },
+            {
+              "name": "envelopeName",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Envelope Name'",
+              "fieldName": "envelopeName"
+            },
+            {
+              "name": "height",
+              "type": {
+                "text": "string"
+              },
+              "default": "'900px'",
+              "fieldName": "height"
+            },
+            {
+              "name": "signerName",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "signerName"
+            },
+            {
+              "name": "signerEmail",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "signerEmail"
+            },
+            {
+              "name": "assureSignApiUsername",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "assureSignApiUsername"
+            },
+            {
+              "name": "assureSignApiKey",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "assureSignApiKey"
+            },
+            {
+              "name": "assureSignApiUserEmail",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "assureSignApiUserEmail"
+            },
+            {
+              "name": "assureSignTemplateId",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "assureSignTemplateId"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "elementName",
+          "customElement": true
+        },
+        {
+          "kind": "variable",
+          "name": "elementName",
+          "type": {
+            "text": "string"
+          },
+          "default": "'embedded-assuresign'"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "EmbeddedAssureSign",
+          "declaration": {
+            "name": "EmbeddedAssureSign",
+            "module": "src/components/embedded-esign/embedded-assuresign.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "elementName",
+          "declaration": {
+            "name": "EmbeddedAssureSign",
+            "module": "src/components/embedded-esign/embedded-assuresign.js"
           }
         }
       ]
