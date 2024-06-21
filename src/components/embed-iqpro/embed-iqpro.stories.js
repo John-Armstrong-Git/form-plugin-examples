@@ -7,14 +7,11 @@ export default {
   component: 'embed-iqpro',
 };
 
-const Template = ({ height, url, apikey }) => {
-  return html`<embed-iqpro .height=${height} .url=${url} .apikey=${apikey}>
-  </embed-iqpro>`;
+const Template = ({ apikey }) => {
+  return html`<embed-iqpro .apikey=${apikey}></embed-iqpro>`;
 };
 
 export const Base = Template.bind({});
 Base.args = {
-  height: '1000px',
-  url: 'localhost',
   apikey: 'pub_2hCCCdzZeitXyBY16cLCXFzpJHO',
 };
