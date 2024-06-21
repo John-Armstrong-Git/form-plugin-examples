@@ -350,6 +350,80 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/embed-iqpro/andy iqpro example.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "NintexSampleIframe",
+          "members": [
+            {
+              "kind": "field",
+              "name": "apikey",
+              "type": {
+                "text": "string"
+              },
+              "default": "'pub_2hCCCdzZeitXyBY16cLCXFzpJHO'",
+              "attribute": "apikey"
+            },
+            {
+              "kind": "method",
+              "name": "getMetaConfig",
+              "static": true,
+              "return": {
+                "type": {
+                  "text": "Promise<PluginContract> | PluginContract"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setupButton"
+            },
+            {
+              "kind": "method",
+              "name": "initializeTokenizer"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "apikey",
+              "type": {
+                "text": "string"
+              },
+              "default": "'pub_2hCCCdzZeitXyBY16cLCXFzpJHO'",
+              "fieldName": "apikey"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "andy-iqpro",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "NintexSampleIframe",
+          "declaration": {
+            "name": "NintexSampleIframe",
+            "module": "src/components/embed-iqpro/andy iqpro example.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "andy-iqpro",
+          "declaration": {
+            "name": "NintexSampleIframe",
+            "module": "src/components/embed-iqpro/andy iqpro example.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/grid-js/grid-js.ts",
       "declarations": [
         {
@@ -520,7 +594,7 @@
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "form-plugin-iframe",
+          "tagName": "andy-iqpro",
           "customElement": true
         }
       ],
@@ -875,6 +949,116 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/embed-iqpro/embed-iqpro.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "EmbedIqpro",
+          "members": [
+            {
+              "kind": "method",
+              "name": "getMetaConfig",
+              "static": true
+            },
+            {
+              "kind": "method",
+              "name": "startTokenizer"
+            },
+            {
+              "kind": "method",
+              "name": "submitButton"
+            },
+            {
+              "kind": "method",
+              "name": "paymentSubmission",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "createTokenDisplay",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "apikey",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "apikey"
+            },
+            {
+              "kind": "field",
+              "name": "paymentInfo",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "attribute": "paymentInfo"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "apikey",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "apikey"
+            },
+            {
+              "name": "paymentInfo",
+              "type": {
+                "text": "object"
+              },
+              "fieldName": "paymentInfo"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "elementName",
+          "customElement": true
+        },
+        {
+          "kind": "variable",
+          "name": "elementName",
+          "type": {
+            "text": "string"
+          },
+          "default": "'embed-iqpro'"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "EmbedIqpro",
+          "declaration": {
+            "name": "EmbedIqpro",
+            "module": "src/components/embed-iqpro/embed-iqpro.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "elementName",
+          "declaration": {
+            "name": "EmbedIqpro",
+            "module": "src/components/embed-iqpro/embed-iqpro.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/embedded-esign/embedded-assuresign.js",
       "declarations": [
         {
@@ -1089,110 +1273,6 @@
           "declaration": {
             "name": "EmbeddedAssureSign",
             "module": "src/components/embedded-esign/embedded-assuresign.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/embed-iqpro/embed-iqpro.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "EmbedIqpro",
-          "members": [
-            {
-              "kind": "method",
-              "name": "getMetaConfig",
-              "static": true
-            },
-            {
-              "kind": "method",
-              "name": "load"
-            },
-            {
-              "kind": "field",
-              "name": "height",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "height"
-            },
-            {
-              "kind": "field",
-              "name": "url",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "url"
-            },
-            {
-              "kind": "field",
-              "name": "apikey",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "apikey"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "height",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "height"
-            },
-            {
-              "name": "url",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "url"
-            },
-            {
-              "name": "apikey",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "apikey"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "elementName",
-          "customElement": true
-        },
-        {
-          "kind": "variable",
-          "name": "elementName",
-          "type": {
-            "text": "string"
-          },
-          "default": "'embed-iqpro'"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "EmbedIqpro",
-          "declaration": {
-            "name": "EmbedIqpro",
-            "module": "src/components/embed-iqpro/embed-iqpro.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "elementName",
-          "declaration": {
-            "name": "EmbedIqpro",
-            "module": "src/components/embed-iqpro/embed-iqpro.js"
           }
         }
       ]
