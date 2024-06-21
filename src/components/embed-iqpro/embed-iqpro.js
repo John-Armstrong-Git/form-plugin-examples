@@ -1,143 +1,180 @@
-import { css, html, LitElement } from 'lit';
-import { styleMap } from 'lit/directives/style-map.js';
-import { until } from 'lit/directives/until.js';
-import { Tokenizer } from 'iqpro/tokenizer.js';
+// import {
+//   css,
+//   html,
+//   LitElement,
+// } from 'https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js';
+import { LitElement, html, css } from 'lit';
 
 export class EmbedIqpro extends LitElement {
   static styles = css`
-    :host {
-      height: 100%;
-      width: 100%;
-      display: block;
-    }
-
-    .frame {
-      display: inline-block;
-      height: 100%;
-      width: 100%;
-      background-color: transparent;
-      border: none;
+    .form-control {
+      color: var(--ntx-form-theme-color-secondary);
+      background-color: var(
+        --ntx-form-theme-color-input-background,
+        transparent
+      );
+      font-size: var(--ntx-form-theme-text-input-size);
+      font-family: var(--ntx-form-theme-font-family);
+      border: 1px solid var(--ntx-form-theme-color-border);
+      border-radius: var(--ntx-form-theme-border-radius);
     }
   `;
 
   static properties = {
-    height: { type: String },
-    url: { type: String },
     apikey: { type: String },
+    paymentInfo: { type: Object },
   };
 
   static getMetaConfig() {
     // plugin contract information
     return {
-      controlName: 'embed-iqpro',
-      fallbackDisableSubmit: false,
+      controlName: 'iQPro Payment Tokenizer',
       description: 'iFrame component which can render iQPro Tokenizer',
-      iconUrl: 'pen',
-      groupName: 'payment',
+      iconUrl: 'currency',
+      groupName: 'Payment Gateways',
       version: '1.3',
       properties: {
-        height: {
-          type: 'string',
-          title: 'Height',
-          description: 'Height of the component',
-        },
         apikey: {
           type: 'string',
-          title: 'iQ Pro Public API Key',
+          title: 'API Key',
+          description: 'iQ Pro Public API Key. Should start with "pub_"',
+          defaultValue: 'pub_2hCCCdzZeitXyBY16cLCXFzpJHO',
+        },
+      },
+      designer: {
+        staticProperties: {
+          paymentInfo: {
+            type: 'object',
+            title: 'Payment Info',
+            isValueField: true,
+            properties: {
+              status: {
+                type: 'string',
+                description: 'Payment Status',
+                title: 'Payment Status',
+              },
+              token: {
+                type: 'string',
+                description: 'Payment Token',
+                title: 'Payment Token',
+              },
+            },
+          },
+        },
+        canvasRestrictions: {
+          isFullRow: true,
         },
       },
       standardProperties: {
         description: true,
+        fieldLabel: true,
+        toolTip: true,
+        visibility: true,
       },
+      events: ['ntx-value-change'],
+      fallbackDisableSubmit: true,
     };
   }
 
-  async load() {
-    var example = new Tokenizer({
-      url: this.url,
+  firstUpdated() {
+    console.log('Creating script');
+    const insertScript = document.createElement('script');
+    insertScript.src = 'https://sandbox.basysiqpro.com/tokenizer/tokenizer.js';
+    this.shadowRoot?.appendChild(insertScript);
+    insertScript.onload = () => this.startTokenizer();
+  }
+
+  startTokenizer() {
+    console.log('Starting Tokenizer');
+    var tokenizerForm = new Tokenizer({
+      url: 'https://sandbox.basysiqpro.com',
       apikey: this.apikey,
-      container: '#container',
+      container: this.shadowRoot?.querySelector('#paymentContainer'),
 
       // Callback after submission request has been made
       submission: resp => {
+        console.log('Response received');
         // Figure out what response you got back
         switch (resp.status) {
           case 'success':
             // Successful submission
+            console.log('Success');
             console.log(resp.token);
-
-            // If you had user info
-            if (resp.user) {
-              console.log(resp.user);
-            }
-
-            // If you had billing info
-            if (resp.billing) {
-              console.log(resp.billing);
-            }
-
-            // If you had shipping info
-            if (resp.shipping) {
-              console.log(resp.shipping);
-            }
+            this.paymentSubmission(resp);
             break;
           case 'error':
             // Encountered an error while performing submission
+            console.log('Error');
             console.log(resp.msg);
+            this.createTokenDisplay(resp);
             break;
           case 'validation':
             // Encountered form validation specific errors
+            console.log('Invalid');
             console.log(resp.invalid);
+            this.createTokenDisplay(resp);
             break;
         }
       },
-
-      // Callback after iframe is initiated an onload
-      onLoad: () => {
-        console.log('iframe has loaded');
-      },
-
-      // Callback after payment type changes
-      onPaymentChange: type => {
-        console.log(type);
-      },
-
-      // Callback to identify when a valid cc has been inputed
-      // If valid will return ccbin data as well
-      validCard: card => {
-        console.log(card);
-        // card.isValid // Boolean
-        // card.bin // Object of bin data
-      },
-
-      // Callback for when the user has changed sec code or account type
-      achOnChange: data => {
-        console.log(data);
-      },
     });
 
-    // Set error on field
-    // by passing in the field name which is the name of primary css on the field
-    // it will set a red border around the field
-    example.setError('cvv'); // Set error on cvv field
+    this.shadowRoot
+      ?.querySelector('#submitPayment')
+      ?.addEventListener('click', () => tokenizerForm.submit());
+  }
 
-    // Set expiration date on card payment
-    example.setExpDate('09/12');
+  submitButton() {
+    this.shadowRoot
+      ?.querySelector('#submitPayment')
+      ?.addEventListener('click', () => {
+        this.startTokenizer();
+      });
+  }
 
-    // Submit payment
-    example.submit();
+  paymentSubmission(e) {
+    const args = {
+      bubbles: true,
+      cancelable: false,
+      compsed: true,
+      detail: e,
+    };
+    const event = new CustomEvent('ntx-value-change', args);
+    this.dispatchEvent(event);
+    console.log('Event triggered');
+    console.log(e);
 
-    let styles = { height: this.height };
-    return html` <iframe
-      class="frame"
-      style=${styleMap(styles)}
-      id="container"
-    ></iframe>`;
+    this.createTokenDisplay(e);
+  }
+
+  createTokenDisplay(e) {
+    if (e.status == 'success') {
+      const deadChild = this.shadowRoot?.querySelector('#tokenizerDisplay');
+      this.shadowRoot?.removeChild(deadChild);
+    } else {
+      console.log('Starting display setup');
+
+      if (this.shadowRoot?.querySelector('#tokenizerDisplay') != null) {
+        console.log('This div exists!');
+        const deadChild = this.shadowRoot?.querySelector('#tokenizerDisplay');
+        this.shadowRoot?.removeChild(deadChild);
+      } else {
+        console.log('This div does not exist yet');
+      }
+
+      console.log('Creating div');
+      const tokenizerOutput = JSON.stringify(e);
+      const newDiv = document.createElement('div');
+      newDiv.id = 'tokenizerDisplay';
+      const childDiv = this.shadowRoot?.appendChild(newDiv);
+      const tokenizerText = document.createTextNode(tokenizerOutput);
+      childDiv.appendChild(tokenizerText);
+    }
   }
 
   // Render the UI as a function of component state
   render() {
-    return html`${until(this.resp, html`<span>Loading...</span>`)}`;
+    return html`<div id="paymentContainer"></div>
+      <button id="submitPayment">Request Payment</button>`;
   }
 }
 
