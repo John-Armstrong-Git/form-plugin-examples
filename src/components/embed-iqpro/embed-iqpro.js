@@ -1,27 +1,23 @@
-// import {
-//   css,
-//   html,
-//   LitElement,
-// } from 'https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js';
-import { LitElement, html, css } from 'lit';
+import {
+  css,
+  html,
+  LitElement,
+} from 'https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js';
+// import { LitElement, html, css } from 'lit';
 
 export class EmbedIqpro extends LitElement {
   static styles = css`
-    .form-control {
-      color: var(--ntx-form-theme-color-secondary);
-      background-color: var(
-        --ntx-form-theme-color-input-background,
-        transparent
-      );
-      font-size: var(--ntx-form-theme-text-input-size);
+    #submitPayment {
+      background-color: var(--ntx-form-theme-color-primary);
+      font-size: var(--ntx-form-theme-text-label-size);
       font-family: var(--ntx-form-theme-font-family);
-      border: 1px solid var(--ntx-form-theme-color-border);
+      border: 0px;
       border-radius: var(--ntx-form-theme-border-radius);
     }
   `;
 
   static properties = {
-    apikey: { type: String },
+    apiKey: { type: String },
     paymentInfo: { type: Object },
   };
 
@@ -29,47 +25,45 @@ export class EmbedIqpro extends LitElement {
     // plugin contract information
     return {
       controlName: 'iQPro Payment Tokenizer',
-      description: 'iFrame component which can render iQPro Tokenizer',
+      description: 'Render iQPro Tokenizer',
       iconUrl: 'currency',
       groupName: 'Payment Gateways',
       version: '1.3',
+      standardProperties: {
+        description: true,
+        fieldLabel: false,
+        visibility: true,
+      },
       properties: {
-        apikey: {
+        apiKey: {
           type: 'string',
           title: 'API Key',
-          description: 'iQ Pro Public API Key. Should start with "pub_"',
+          required: true,
+          description: 'iQ Pro Public API Key. Should start with pub',
           defaultValue: 'pub_2hCCCdzZeitXyBY16cLCXFzpJHO',
         },
-      },
-      designer: {
-        staticProperties: {
-          paymentInfo: {
-            type: 'object',
-            title: 'Payment Info',
-            isValueField: true,
-            properties: {
-              status: {
-                type: 'string',
-                description: 'Payment Status',
-                title: 'Payment Status',
-              },
-              token: {
-                type: 'string',
-                description: 'Payment Token',
-                title: 'Payment Token',
-              },
+        paymentInfo: {
+          type: 'object',
+          title: 'Payment Info',
+          isValueField: true,
+          properties: {
+            status: {
+              type: 'string',
+              description: 'Payment Status',
+              title: 'Payment Status',
+            },
+            token: {
+              type: 'string',
+              description: 'Payment Token',
+              title: 'Payment Token',
             },
           },
         },
+      },
+      designer: {
         canvasRestrictions: {
           isFullRow: true,
         },
-      },
-      standardProperties: {
-        description: true,
-        fieldLabel: true,
-        toolTip: true,
-        visibility: true,
       },
       events: ['ntx-value-change'],
       fallbackDisableSubmit: true,
@@ -88,7 +82,7 @@ export class EmbedIqpro extends LitElement {
     console.log('Starting Tokenizer');
     var tokenizerForm = new Tokenizer({
       url: 'https://sandbox.basysiqpro.com',
-      apikey: this.apikey,
+      apikey: this.apiKey,
       container: this.shadowRoot?.querySelector('#paymentContainer'),
 
       // Callback after submission request has been made
