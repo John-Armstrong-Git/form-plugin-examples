@@ -1,0 +1,16 @@
+
+// --ntx-form-theme-font-family = 'Text formatting' -> 'Font'
+// --ntx-form-theme-text-input-size = 'Text formatting' -> 'Input'
+// --ntx-form-theme-text-label-size = 'Text formatting' -> 'Control labels' (affects button font size)
+
+// --ntx-form-theme-color-page-background = 'Color' -> 'Page background'
+// --ntx-form-theme-color-form-background = 'Color' -> 'Form background'
+// --ntx-form-theme-color-input-background = 'Color' -> 'Control fill'
+// --ntx-form-theme-color-border = 'Color' -> 'Control border color'
+// --ntx-form-theme-color-input-text = 'Color' -> 'Control input color' (is this broken?)
+// --ntx-form-theme-color-primary = 'Color' -> 'Primary color'
+// --ntx-form-theme-color-secondary = 'Color' -> 'Control input color' (confirmed)
+// --ntx-form-theme-color-error = 'Color' -> ?
+
+// --ntx-form-theme-border-radius = 'Color' -> 'Control border style' (Rounded or Square)
+// --ntx-form-theme-control-height = ?
