@@ -7,11 +7,11 @@ export default {
   component: 'embed-iqpro',
 };
 
-const Template = ({ apikey }) => {
-  return html`<embed-iqpro .apikey=${apikey}></embed-iqpro>`;
+const Template = ({ apiKey }) => {
+  return html`<embed-iqpro .apiKey=${apiKey}></embed-iqpro>`;
 };
 
 export const Base = Template.bind({});
 Base.args = {
-  apikey: 'pub_2hCCCdzZeitXyBY16cLCXFzpJHO',
+  apiKey: 'pub_2hCCCdzZeitXyBY16cLCXFzpJHO',
 };
