@@ -506,119 +506,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/iframe/iframe.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "NintexSampleIframe",
-          "members": [
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "name"
-            },
-            {
-              "kind": "field",
-              "name": "description",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "description"
-            },
-            {
-              "kind": "field",
-              "name": "src",
-              "type": {
-                "text": "string"
-              },
-              "default": "'https://www.wikipedia.org/'",
-              "attribute": "src"
-            },
-            {
-              "kind": "field",
-              "name": "height",
-              "type": {
-                "text": "number"
-              },
-              "default": "500",
-              "attribute": "height"
-            },
-            {
-              "kind": "method",
-              "name": "getMetaConfig",
-              "static": true,
-              "return": {
-                "type": {
-                  "text": "Promise<PluginContract> | PluginContract"
-                }
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "name"
-            },
-            {
-              "name": "description",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "description"
-            },
-            {
-              "name": "src",
-              "type": {
-                "text": "string"
-              },
-              "default": "'https://www.wikipedia.org/'",
-              "fieldName": "src"
-            },
-            {
-              "name": "height",
-              "type": {
-                "text": "number"
-              },
-              "default": "500",
-              "fieldName": "height"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "andy-iqpro",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NintexSampleIframe",
-          "declaration": {
-            "name": "NintexSampleIframe",
-            "module": "src/components/iframe/iframe.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "form-plugin-iframe",
-          "declaration": {
-            "name": "NintexSampleIframe",
-            "module": "src/components/iframe/iframe.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/material-slider/material-slider.ts",
       "declarations": [
         {
@@ -747,6 +634,119 @@
           "declaration": {
             "name": "NintexSampleSlider",
             "module": "src/components/material-slider/material-slider.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/iframe/iframe.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "NintexSampleIframe",
+          "members": [
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "description"
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "default": "'https://www.wikipedia.org/'",
+              "attribute": "src"
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "type": {
+                "text": "number"
+              },
+              "default": "500",
+              "attribute": "height"
+            },
+            {
+              "kind": "method",
+              "name": "getMetaConfig",
+              "static": true,
+              "return": {
+                "type": {
+                  "text": "Promise<PluginContract> | PluginContract"
+                }
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "name"
+            },
+            {
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "description"
+            },
+            {
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "default": "'https://www.wikipedia.org/'",
+              "fieldName": "src"
+            },
+            {
+              "name": "height",
+              "type": {
+                "text": "number"
+              },
+              "default": "500",
+              "fieldName": "height"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "andy-iqpro",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "NintexSampleIframe",
+          "declaration": {
+            "name": "NintexSampleIframe",
+            "module": "src/components/iframe/iframe.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "form-plugin-iframe",
+          "declaration": {
+            "name": "NintexSampleIframe",
+            "module": "src/components/iframe/iframe.ts"
           }
         }
       ]
@@ -988,13 +988,17 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "hideControl"
+            },
+            {
               "kind": "field",
-              "name": "apikey",
+              "name": "apiKey",
               "privacy": "public",
               "type": {
                 "text": "string"
               },
-              "attribute": "apikey"
+              "attribute": "apiKey"
             },
             {
               "kind": "field",
@@ -1008,11 +1012,11 @@
           ],
           "attributes": [
             {
-              "name": "apikey",
+              "name": "apiKey",
               "type": {
                 "text": "string"
               },
-              "fieldName": "apikey"
+              "fieldName": "apiKey"
             },
             {
               "name": "paymentInfo",
@@ -1077,26 +1081,6 @@
             },
             {
               "kind": "field",
-              "name": "envelopeName",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Envelope Name'",
-              "attribute": "envelopeName"
-            },
-            {
-              "kind": "field",
-              "name": "height",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "default": "'900px'",
-              "attribute": "height"
-            },
-            {
-              "kind": "field",
               "name": "src",
               "privacy": "public",
               "type": {
@@ -1112,6 +1096,24 @@
                 "text": "string"
               },
               "attribute": "content"
+            },
+            {
+              "kind": "field",
+              "name": "envelopeName",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "envelopeName"
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "height"
             },
             {
               "kind": "field",
@@ -1188,7 +1190,6 @@
               "type": {
                 "text": "string"
               },
-              "default": "'Envelope Name'",
               "fieldName": "envelopeName"
             },
             {
@@ -1196,7 +1197,6 @@
               "type": {
                 "text": "string"
               },
-              "default": "'900px'",
               "fieldName": "height"
             },
             {
