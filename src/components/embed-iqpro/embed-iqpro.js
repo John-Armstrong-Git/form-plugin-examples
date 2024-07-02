@@ -38,7 +38,7 @@ export class EmbedIqpro extends LitElement {
         apiKey: {
           type: 'string',
           title: 'API Key',
-          required: true,
+          // required: true,
           description: 'iQ Pro Public API Key. Should start with pub',
           defaultValue: 'pub_2hCCCdzZeitXyBY16cLCXFzpJHO',
         },
@@ -95,6 +95,7 @@ export class EmbedIqpro extends LitElement {
             console.log('Success');
             console.log(resp.token);
             this.paymentSubmission(resp);
+            this.hideControl();
             break;
           case 'error':
             // Encountered an error while performing submission
@@ -142,6 +143,7 @@ export class EmbedIqpro extends LitElement {
 
   createTokenDisplay(e) {
     if (e.status == 'success') {
+      console.log('Success - do not disply');
       const deadChild = this.shadowRoot?.querySelector('#tokenizerDisplay');
       this.shadowRoot?.removeChild(deadChild);
     } else {
@@ -163,6 +165,15 @@ export class EmbedIqpro extends LitElement {
       const tokenizerText = document.createTextNode(tokenizerOutput);
       childDiv.appendChild(tokenizerText);
     }
+  }
+
+  hideControl() {
+    console.log('Attempting to hide controls');
+    const paymentFields = this.shadowRoot?.querySelector('#paymentContainer');
+    const buttonField = this.shadowRoot?.querySelector('#submitPayment');
+
+    paymentFields.style.display = 'none';
+    buttonField.style.display = 'none';
   }
 
   // Render the UI as a function of component state
