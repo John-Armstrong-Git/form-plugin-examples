@@ -91,18 +91,31 @@ export class EmbeddedAssureSign extends LitElement {
           title: 'AssureSign template Id',
           defaultValue: '2baecacb-fa5b-458c-973e-ae5801134b3e',
         },
+        envelopeIdOutput: {
+          type: 'string',
+          title: 'Envelope ID Output',
+          isValueField: true,
+        },
       },
-      standardProperties: {
-        readOnly: true,
-        description: true,
-      },
+      standardProperties: {},
+      events: ['ntx-value-change'],
     };
   }
 
-  async load() {
-    console.log('Starting... without stringify');
-    console.log('Constructing Authentication Body...');
+  envelopeCreated(e) {
+    const args = {
+      bubbles: true,
+      cancelable: false,
+      compsed: true,
+      detail: e,
+    };
+    const event = new CustomEvent('ntx-value-change', args);
+    this.dispatchEvent(event);
+    console.log('Event triggered');
+    console.log(e);
+  }
 
+  async load() {
     const apiUserBody = {
       request: {
         apiUsername: this.assureSignApiUsername,
@@ -111,11 +124,8 @@ export class EmbeddedAssureSign extends LitElement {
         sessionLengthInMinutes: 60,
       },
     };
-    console.log(apiUserBody);
 
     const apiUserBodyString = JSON.stringify(apiUserBody);
-    console.log(apiUserBodyString);
-    console.log('Making Authentication Call...');
 
     const response = await fetch(
       'https://account.assuresign.net/api/v3.7/authentication/apiUser',
@@ -129,13 +139,7 @@ export class EmbeddedAssureSign extends LitElement {
       }
     );
 
-    console.log('Authentication complete...');
-    console.log(response);
-
     const jsonResponse = await response.json();
-
-    console.log(jsonResponse);
-
     const token = jsonResponse.result.token;
 
     const submitBody = {
@@ -180,8 +184,8 @@ export class EmbeddedAssureSign extends LitElement {
     );
 
     const jsonSubmit = await submit.json();
-
     const envelopeId = jsonSubmit.result.envelopeID;
+    this.envelopeCreated(envelopeId);
 
     const signingLinks = await fetch(
       'https://www.assuresign.net/api/documentnow/v3.7/envelope/' +
