@@ -91,28 +91,16 @@ export class EmbeddedAssureSign extends LitElement {
           title: 'AssureSign template Id',
           defaultValue: '2baecacb-fa5b-458c-973e-ae5801134b3e',
         },
-        envelopeIdOutput: {
-          type: 'string',
-          title: 'Envelope ID Output',
-          isValueField: true,
-        },
+        // envelopeIdOutput: {
+        //   type: 'string',
+        //   title: 'Envelope ID Outputers',
+        //   isValueField: true,
+        //   readOnly: true,
+        // },
       },
       standardProperties: {},
       events: ['ntx-value-change'],
     };
-  }
-
-  envelopeCreated(e) {
-    const args = {
-      bubbles: true,
-      cancelable: false,
-      compsed: true,
-      detail: e,
-    };
-    const event = new CustomEvent('ntx-value-change', args);
-    this.dispatchEvent(event);
-    console.log('Event triggered');
-    console.log(e);
   }
 
   async load() {
@@ -185,7 +173,6 @@ export class EmbeddedAssureSign extends LitElement {
 
     const jsonSubmit = await submit.json();
     const envelopeId = jsonSubmit.result.envelopeID;
-    this.envelopeCreated(envelopeId);
 
     const signingLinks = await fetch(
       'https://www.assuresign.net/api/documentnow/v3.7/envelope/' +
